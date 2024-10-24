@@ -70,40 +70,36 @@ Instead of storing the entire precedence table, the parser uses **precedence fun
 Sample input for the parser:
 
 ```bash
-Enter the number of LHS variables: 2
-Enter the 1th grammar (production) you want to check: S -> e
-Enter the 2th grammar (production) you want to check: S -> S + S
+Enter the number of LHS variables: 3
+Enter the 1th grammar (production) you want to check: 
+S -> i
+Enter the 2th grammar (production) you want to check:
+S -> S + S
+Enter the 3th grammar (production) you want to check:
+S -> S * S
 Grammar is accepted
-Enter the operators used in the given grammar including the terminals: +e
-```
-
-The Operator Precedence Relational Table:
-
-```
+Enter the operators used in the given grammar including the terminals: +*i
+['+', '*', 'i', '$']
 The Operator Precedence Relational Table
 =============================================
-[[''  '+'  'e'  '$']
- ['+'  '>'  '<'  '>']
- ['e'  '>'  ''   '>']
- ['$'  '<'  '<'  '']]
-```
-
-Input a string to check:
-
-```bash
-Enter the string to be checked (non-terminals should be in lowercase): e+e
-```
-
-Output for a valid string:
-
-```
-STACK                   INPUT STRING           ACTION
-$                       e+e$                   Shift e
-$e                      +e$                    Shift +
-$e+                     e$                     Shift e
-$e+e                    $                      Reduce to E
-$E+                     $                      Reduce to E
-$E                      $                      String is accepted
+[['' '+' '*' 'i' '$']
+ ['+' '>' '<' '<' '>']
+ ['*' '>' '>' '<' '>']
+ ['i' '>' '>' '' '>']
+ ['$' '<' '<' '<' '']]
+Enter the string to be checked (non-terminals should be in lowercase): i+i*i
+STACK                           INPUT STRING            ACTION
+$i                              +i*i$                   Shift i
+$S                              +i*i$                   Reduce to S
+$S+                             i*i$                    Shift +
+$S+i                            *i$                     Shift i
+$S+S                            *i$                     Reduce to S
+$S+S*                           i$                      Shift *
+$S+S*i                          $                       Shift i
+$S+S*S                          $                       Reduce to S
+$S+S                            $                       Reduce to S
+$S                              $                       Reduce to S
+$                               $                       String is accepted
 ```
 
 ## Code Structure
