@@ -71,10 +71,10 @@ Sample input for the parser:
 
 ```bash
 Enter the number of LHS variables: 2
-Enter the 1th grammar (production) you want to check: S -> E
-Enter the 2th grammar (production) you want to check: E -> E + E
+Enter the 1th grammar (production) you want to check: S -> e
+Enter the 2th grammar (production) you want to check: S -> S + S
 Grammar is accepted
-Enter the operators used in the given grammar including the terminals: +E
+Enter the operators used in the given grammar including the terminals: +e
 ```
 
 The Operator Precedence Relational Table:
@@ -82,9 +82,9 @@ The Operator Precedence Relational Table:
 ```
 The Operator Precedence Relational Table
 =============================================
-[[''  '+'  'E'  '$']
+[[''  '+'  'e'  '$']
  ['+'  '>'  '<'  '>']
- ['E'  '>'  ''   '>']
+ ['e'  '>'  ''   '>']
  ['$'  '<'  '<'  '']]
 ```
 
